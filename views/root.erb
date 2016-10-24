@@ -1,0 +1,43 @@
+mano pagrindinis puslapis
+<div class="container">
+<table class='table table-striped'>
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Age</th>
+    <th>Code</th>
+    <th>Sex</th>
+  </thead>
+
+  <tbody>
+      <% @customers.each do |customer| %>
+      <tr>
+        <td> <%= customer.id %> </td>
+        <<td><a href="/customers/<%= customer.id %>"><%= customer.name %></a></td>
+        <td> <%= customer.surname %> </td>
+        <td> <%= customer.age %> </td>
+        <td> <%= customer.code %> </td>
+        <td> <%= customer.sex %> </td>
+      </tr>
+      <% end %>
+  </tbody>
+
+</table>
+</div>
+
+
+<%= will_paginate @customers, renderer: BootstrapPagination::Sinatra %>
+
+<div class="container">
+<form action="add_new_customer" method="POST">
+  <input type="text" name="name">
+  <input type="text" name="surname">
+  <input type="text" name="age">
+  <input type="text" name="code">
+  <input type="text" name="sex">
+
+  <input type="submit" value="Issaugoti">
+</div>
+
+</form>
